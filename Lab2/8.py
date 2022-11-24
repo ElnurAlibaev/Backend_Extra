@@ -1,24 +1,31 @@
-def add_money(m:float, x:float)->float:
-    m+=x
-    return m
-
-def remove_money(m:float, x:float)->float:
-    m-=x
-    return m
-
-def recount_money(m:float, c:str):
-    if c=="tenge":
-        c="dollars"
-        m=m/464
-    else:
-        c="tenge"
-        m=m*464
-
 money=4640.0
-currency="tenge"
+currency="KZT"
 
-money=add_money(money,464.0)
-print(money)
+def add_money(x:float)->None:
+    global money
+    money+=x
 
-money=remove_money(money,464.0)
-print(money)
+def remove_money(x:float)->None:
+    global money
+    money-=x
+
+def recount_money()->None:
+    global money,currency
+    if currency=="KZT":
+        currency="USD"
+        money=money/464
+    else:
+        currency="KZT"
+        money=money*464
+
+add_money(464)
+print(money, currency)
+
+remove_money(464)
+print(money, currency)
+
+recount_money()
+print(money, currency)
+
+recount_money()
+print(money, currency)
